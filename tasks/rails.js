@@ -20,6 +20,23 @@ module.exports = function(grunt) {
 
   var _pidFile = "tmp/pids/server.pid";
 
+  grunt.registerTask('railsServer', 'Control your Rails server via Grunt', function(name, command) {
+    command = command || 'development';
+
+    var args = [];
+
+    var options = this.options();
+
+    args.unshift('server');
+    _currentProcess = spawn('rails', args, {
+      stdio: ['ignore', process.stdout, 'ignore']
+    });
+
+    process.on('exit', function() {
+      _currentProcess.kill();
+    });
+  },
+
   grunt.registerTask('rails', 'Control your Rails server via Grunt', function(name, command) {
 
     command = command || 'start';
