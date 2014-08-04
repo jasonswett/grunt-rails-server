@@ -24,6 +24,10 @@ module.exports = function(grunt) {
     var args = [];
     var options = this.options();
 
+    if (!['development', 'test'].indexOf(environment)) {
+      environment = 'development';
+    }
+
     args.unshift('server');
     _currentProcess = spawn('rails', args.concat(['-e', environment]), {
       stdio: ['ignore', process.stdout, 'ignore']
