@@ -24,7 +24,7 @@ module.exports = function(grunt) {
     var args = [];
     var options = this.options();
 
-    if (!['development', 'test'].indexOf(environment)) {
+    if (['development', 'test'].indexOf(environment) < 0) {
       environment = 'development';
     }
 
