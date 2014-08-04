@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     process.on('exit', function() {
       _currentProcess.kill();
     });
-  },
+  });
 
   grunt.registerTask('rails', 'Control your Rails server via Grunt', function(name, command) {
 
