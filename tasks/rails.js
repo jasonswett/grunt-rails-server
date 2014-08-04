@@ -21,15 +21,16 @@ module.exports = function(grunt) {
   var _pidFile = "tmp/pids/server.pid";
 
   grunt.registerTask('railsServer', 'Control your Rails server via Grunt', function(environment) {
-    var args = [];
     var options = this.options();
 
-    if (['development', 'test'].indexOf(environment) < 0) {
-      environment = 'development';
+    if (environment == 'test') {
+      var args = ['-e test', '-p 3001'];
+    } else {
+      var args = [];
     }
 
     args.unshift('server');
-    _currentProcess = spawn('rails', args.concat(['-e', environment]), {
+    _currentProcess = spawn('rails server', args, {
       stdio: ['ignore', process.stdout, 'ignore']
     });
 
