@@ -22,11 +22,11 @@ module.exports = function(grunt) {
 
   grunt.registerTask('railsServer', 'Control your Rails server via Grunt', function(environment) {
     var options = this.options();
+    var args = [];
 
     if (environment == 'test') {
-      var args = ['-e test', '-p 3001'];
-    } else {
-      var args = [];
+      args.push('-e', 'test');
+      args.push('-p', '3001');
     }
 
     args.unshift('server');
