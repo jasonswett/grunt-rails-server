@@ -27,7 +27,9 @@ module.exports = function(grunt) {
     if (environment == 'test') {
       args.push('-e', 'test');
       args.push('-p', '3001');
+
       _pidFile = 'tmp/pids/rails_server_test.pid';
+      args.push('--pid', _pidFile);
     }
 
     args.unshift('server');
