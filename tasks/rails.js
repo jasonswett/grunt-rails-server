@@ -30,7 +30,7 @@ module.exports = function(grunt) {
     }
 
     args.unshift('server');
-    _currentProcess = spawn('rails server', args, {
+    _currentProcess = spawn('rails', args, {
       stdio: ['ignore', process.stdout, 'ignore']
     });
 
