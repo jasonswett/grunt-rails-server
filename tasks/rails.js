@@ -22,13 +22,11 @@ module.exports = function(grunt) {
 
   grunt.registerTask('railsServer', 'Control your Rails server via Grunt', function(name, command) {
     command = command || 'development';
-
     var args = [];
-
     var options = this.options();
 
     args.unshift('server');
-    _currentProcess = spawn('rails', args, {
+    _currentProcess = spawn('rails', args.concat(['-e', command]), {
       stdio: ['ignore', process.stdout, 'ignore']
     });
 
